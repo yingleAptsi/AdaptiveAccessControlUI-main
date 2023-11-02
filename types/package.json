@@ -1,0 +1,23 @@
+{
+    "name": "types",
+    "version": "0.0.0",
+    "private": true,
+    "config": {
+        "unsafe-perm": "true"
+    },
+    "scripts": {
+        "start": "nodemon",
+        "build": "tsc"
+    },
+    "dependencies": {
+        "eslint": "^8.41.0",
+        "global": "^4.4.0",
+        "ts-jest": "^27.0.3",
+        "ts-node": "^10.9.1",
+        "typeorm": "^0.3.16",
+        "typescript": "^5.0.4"
+    },
+    "devDependencies": {
+        "nodemon": "^1.14.9"
+    }
+}

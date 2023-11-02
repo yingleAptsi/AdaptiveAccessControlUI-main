@@ -1,0 +1,140 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model asset {
+  assetId        BigInt        @id @default(autoincrement()) @map("asset_id")
+  organizationId BigInt        @map("organization_id")
+  name           String[]      @db.Char(1)
+  description    String[]      @db.Char(1)
+  assetType      asset_type    @map("asset_type")
+  createDate     DateTime?     @default(now()) @map("create_date") @db.Timestamptz(6)
+  lastUpdated    DateTime?     @default(now()) @map("last_updated") @db.Timestamptz(6)
+  access_flow    access_flow[]
+  organization   organization  @relation(fields: [organizationId], references: [organizationId], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model node {
+  nodeId                                      BigInt           @id @default(autoincrement()) @map("node_id")
+  rulesetId                                   BigInt           @map("ruleset_id")
+  ruleId                                      BigInt           @map("rule_id")
+  createDate                                  DateTime         @default(now()) @map("create_date") @db.Timestamptz(6)
+  lastUpdated                                 DateTime         @default(now()) @map("last_date") @db.Timestamptz(6)
+  adjacency_list_adjacency_list_childIdTonode adjacency_list[] @relation("adjacency_list_childIdTonode")
+  adjacency_list_adjacency_list_nodeIdTonode  adjacency_list[] @relation("adjacency_list_nodeIdTonode")
+  rule                                        rule             @relation(fields: [ruleId], references: [ruleId], onDelete: NoAction, onUpdate: NoAction)
+  ruleset                                     ruleset          @relation(fields: [rulesetId], references: [rulesetId], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model organization {
+  organizationId BigInt           @id @default(autoincrement()) @map("organization_id")
+  name           String
+  createDate     DateTime         @default(now()) @map("create_date") @db.Timestamptz(6)
+  lastUpdated    DateTime         @default(now()) @map("last_date") @db.Timestamptz(6)
+  asset          asset[]
+  principal_type principal_type[]
+  rule           rule[]
+  ruleset        ruleset[]
+  user           user[]
+}
+
+model rule {
+  ruleId               BigInt       @id @default(autoincrement()) @map("rule_id")
+  name                 String
+  stringRepresentation String       @map("string_representation")
+  type                 rule_type
+  organizationId       BigInt       @map("organization_id")
+  createDate           DateTime     @default(now()) @map("create_date") @db.Timestamptz(6)
+  lastUpdated          DateTime     @default(now()) @map("last_date") @db.Timestamptz(6)
+  node                 node[]
+  organization         organization @relation(fields: [organizationId], references: [organizationId], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model ruleset {
+  rulesetId           BigInt                @id @default(autoincrement()) @map("ruleset_id")
+  organizationId      BigInt
+  createDate          DateTime              @default(now()) @map("create_date") @db.Timestamptz(6)
+  lastUpdated         DateTime              @default(now()) @map("last_date") @db.Timestamptz(6)
+  name                String
+  description         String?
+  access_flow_ruleset access_flow_ruleset[]
+  node                node[]
+  organization        organization          @relation(fields: [organizationId], references: [organizationId], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model user {
+  userId         BigInt       @id @default(autoincrement()) @map("user_id")
+  organizationId BigInt       @map("organization_id")
+  username       String[]     @db.Char(1)
+  name           String[]     @db.Char(1)
+  createDate     DateTime     @default(now()) @map("create_date") @db.Timestamptz(6)
+  lastUpdated    DateTime     @default(now()) @map("last_date") @db.Timestamptz(6)
+  organization   organization @relation(fields: [organizationId], references: [organizationId], onDelete: NoAction, onUpdate: NoAction, map: "user_organization_fk")
+}
+
+model access_flow {
+  accessFlowId        BigInt                @id(map: "accessFlow_pkey") @default(autoincrement()) @map("access_flow_id")
+  assetId             BigInt                @map("asset_id")
+  principalTypeId     BigInt                @map("principal_type_id")
+  name                String[]              @db.Char(1)
+  createDate          DateTime              @default(now()) @map("create_date") @db.Timestamptz(6)
+  lastUpdated         DateTime              @default(now()) @map("last_date") @db.Timestamptz(6)
+  asset               asset                 @relation(fields: [assetId], references: [assetId], onDelete: NoAction, onUpdate: NoAction, map: "accessFlow_assetId_fkey")
+  principal_type      principal_type        @relation(fields: [principalTypeId], references: [principalTypeId], onDelete: NoAction, onUpdate: NoAction, map: "accessFlow_principalTypeId_fkey")
+  access_flow_ruleset access_flow_ruleset[]
+}
+
+model access_flow_ruleset {
+  accessFlowRulesetId BigInt       @id(map: "accessFlowRuleset_pkey") @default(autoincrement()) @map("access_flow_ruleset_id")
+  accessFlowId        BigInt       @map("access_flow_id")
+  rulesetId           BigInt       @map("ruleset_id")
+  rulesetType         ruleset_type @map("ruleset_type")
+  createDate          DateTime     @default(now()) @map("create_date") @db.Timestamptz(6)
+  lastUpdated         DateTime     @default(now()) @map("last_date") @db.Timestamptz(6)
+  access_flow         access_flow  @relation(fields: [accessFlowId], references: [accessFlowId], onDelete: NoAction, onUpdate: NoAction, map: "accessFlowRuleset_accessFlowId_fkey")
+  ruleset             ruleset      @relation(fields: [rulesetId], references: [rulesetId], onDelete: NoAction, onUpdate: NoAction, map: "accessFlowRuleset_rulesetId_fkey")
+}
+
+model adjacency_list {
+  adjacencyListId                   BigInt    @id(map: "adjacencyList_pkey") @default(autoincrement()) @map("adjacency_list_id")
+  nodeId                            BigInt    @map("node_id")
+  childId                           BigInt    @map("child_id")
+  argName                           String?   @map("arg_name")
+  traversalLogic                    String?   @map("traversal_logic")
+  createDate                        DateTime? @default(now()) @map("create_date") @db.Timestamptz(6)
+  lastUpdated                       DateTime? @default(now()) @map("last_date") @db.Timestamptz(6)
+  node_adjacency_list_childIdTonode node      @relation("adjacency_list_childIdTonode", fields: [childId], references: [nodeId], onDelete: NoAction, onUpdate: NoAction, map: "adjacencyList_childId_fkey")
+  node_adjacency_list_nodeIdTonode  node      @relation("adjacency_list_nodeIdTonode", fields: [nodeId], references: [nodeId], onDelete: NoAction, onUpdate: NoAction, map: "adjacencyList_nodeId_fkey")
+}
+
+model principal_type {
+  principalTypeId BigInt        @id(map: "principalType_pkey") @default(autoincrement()) @map("principal_type_id")
+  organizationId  BigInt        @map("organization_id")
+  name            String[]      @db.Char(1)
+  metadata        Json?         @db.Json
+  createDate      DateTime      @default(now()) @map("create_date") @db.Timestamptz(6)
+  lastUpdated     DateTime      @default(now()) @map("last_date") @db.Timestamptz(6)
+  access_flow     access_flow[]
+  organization    organization  @relation(fields: [organizationId], references: [organizationId], onDelete: NoAction, onUpdate: NoAction, map: "principalType_organizationId_fkey")
+}
+
+enum asset_type {
+  API
+  datapoint
+}
+
+enum rule_type {
+  predicate
+  derivative
+}
+
+enum ruleset_type {
+  risk_score
+  risk_threshold
+  risk_decisioning
+}

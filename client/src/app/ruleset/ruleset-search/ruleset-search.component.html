@@ -1,0 +1,48 @@
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <div class="aptsi-card mx-auto my-5">
+                <header class="mb-5">Risk Score Authoring</header>
+                <div class="inner">
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="Ruleset name/ID" [(ngModel)]="searchText" (keyup.enter)="searchRulesets()" />
+                        </div>
+                        <div class="col-4">
+                            <select class="form-select" [(ngModel)]="filterName">
+                                <option value="null">All Categories</option>
+                                <ng-container *ngFor="let header of headers">
+                                    <option *ngIf="header.showInDropdown" value="{{ header.property }}">{{ header.name }}</option>
+                                </ng-container>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-dark me-1" (click)="searchRulesets()">
+                                Search
+                            </button>
+                            <button class="btn btn-light" routerLink="/ruleset/create">Create</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <aptsi-table (updateClicked)="updateRuleset($event)" (deleteClicked)="deleteRuleset($event)"
+                                [headers]="headers" [data]="rulesets"></aptsi-table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn btn-light float-start" (click)="back()">Back</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+    
+    

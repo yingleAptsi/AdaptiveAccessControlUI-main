@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "pretty": true,
+        "rootDir": "src",
+        "sourceMap": true,
+        "target": "es2016",
+        "outDir": "dist",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "types": ["node"],
+        "baseUrl": "./",
+        "declarationMap": true,
+        "declaration": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "paths": {
+            "@fg1-types": ["../types/dist"],
+            "@utils": ["./utils"]
+        }
+    },
+    "exclude": ["node_modules", "examples", "dist", "tests", "**/*.test.ts"],
+    "references": [{ "path": "../types" }]
+}

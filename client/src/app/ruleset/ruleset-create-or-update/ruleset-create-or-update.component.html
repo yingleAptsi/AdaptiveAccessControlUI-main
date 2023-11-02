@@ -1,0 +1,52 @@
+<section class="container">
+  <div class="row justify-content-center">
+      <div class="col-12 text-center">
+          <div class="aptsi-card mx-auto my-5">
+              <div class="row">
+                <div class="col-12">
+                  <header>Risk Score Authoring</header>
+                </div>
+              </div>
+
+              <div class="inner">
+
+                <div class="row mb-1">
+                  <div class="col-12">
+                    <h2 class="float-start">{{ isCreate ? 'Create New' : 'Update' }} Ruleset</h2>
+                  </div>
+                </div>
+
+                <div class="row text-start">
+                  <div class="col-6">
+                    <h3>Ruleset Metadata</h3>  
+                    <form *ngIf="form" [formGroup]="form" (ngSubmit)="submit()">
+                      <div class="mb-3">
+                        <label class="form-label" for="ruleset_name">Ruleset Name:</label>
+                        <input class="form-control" type="text" id="ruleset_name" placeholder="Enter Ruleset Name"  formControlName="rulesetName">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="ruleset_name">Security Zone Id:</label>
+                        <input class="form-control" type="text" id="security_zone" placeholder="Enter Security Zone Id" formControlName="securityZone">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="description">Description:</label>
+                        <textarea class="form-control" type="text" id="description" 
+                          placeholder="Enter Description"  formControlName="description">
+                        </textarea>
+                      </div>
+                      <button type="submit" class="btn btn-light me-3">{{ isCreate ? 'Create' : 'Save' }}</button>
+                      <button type="button" class="btn btn-light" routerLink="/ruleset/search">Cancel</button>
+                    </form>
+                  </div>
+
+                  <div class="col-6">
+                    <h3>Ruleset Details</h3>  
+                    <aptsi-table [haveUpdateDelete]="false" [headers]="headers" [data]="rulesetRules"></aptsi-table>
+                  </div>
+                </div>
+
+              </div>
+          </div>
+      </div> 
+  </div>
+</section>

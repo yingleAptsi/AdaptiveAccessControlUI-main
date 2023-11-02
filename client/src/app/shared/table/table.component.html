@@ -1,0 +1,24 @@
+<table class="table align-middle text-center">
+    <thead>
+        <tr>
+            <th scope="col" *ngIf="haveUpdateDelete"></th>
+            <th scope="col" *ngFor="let header of headers">
+                {{ header.name }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let datapoint of data; let i = index">
+            <td *ngIf="haveUpdateDelete">
+                <div style="display: flex;">
+                    <button class="btn" (click)="update(i)"><i class="bi bi-pencil-fill"></i></button>
+                    <button class="btn" (click)="delete(i)"><i class="bi bi-trash"></i></button>
+                </div>
+            </td>
+            <ng-container *ngFor="let header of headers; let isFirstItem = first">
+                <th *ngIf="isFirstItem">{{ datapoint[header.property] }}</th>
+                <td *ngIf="!isFirstItem">{{ datapoint[header.property] }}</td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>

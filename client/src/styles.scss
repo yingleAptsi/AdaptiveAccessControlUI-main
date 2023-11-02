@@ -1,0 +1,32 @@
+@import '../node_modules/angular-archwizard/archwizard.css';
+body {
+  padding-top: 50px;
+}
+
+.aptsi-card {
+    max-width: 1400px;
+
+    background:#a6e3ff;
+    border-radius: 6px;
+    padding: 20px;
+    
+    border: 3px solid rgb(142, 137, 137);
+    
+    header{
+        font-size: 34px;
+        line-height: 34px;
+        font-weight: 600;
+        color: #232836;
+        text-align: center;
+        margin-bottom: 16px;
+
+    }
+
+    .inner {
+        max-width: 1200px;
+        margin: auto auto;
+    }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

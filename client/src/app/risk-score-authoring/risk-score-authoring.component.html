@@ -1,0 +1,36 @@
+
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <div class="aptsi-card mx-auto my-5">
+   
+                <header class="pb-3">Risk Score Authoring</header>
+
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-5 offset-3">
+                            <select class="form-select"  [(ngModel)]="selectedPage">
+                                <option value="null">None</option>
+                                <option *ngFor="let page of pages" value="{{page}}">{{page}}</option>
+                            </select>
+                        </div>
+                        <div class="col-1 text-start">
+                            <button class="btn btn-dark" (click)="resetPage()">Reset</button>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <button class="btn btn-light" (click)="go()">Go</button>
+                            <button class="btn btn-light ms-3" >Back</button>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+</section>
+

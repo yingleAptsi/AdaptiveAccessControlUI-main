@@ -1,0 +1,34 @@
+
+version: 2
+jobs:
+  build:
+    working_directory: ~/aptsi
+    docker:
+      - image: circleci/node:12.16.1-stretch
+    steps:
+      - checkout
+      - run:
+          name: Custom env vars
+          command: |
+            echo "export NG_CLI_ANALYTICS=ci" >> $BASH_ENV
+      - run: |
+          sudo apt-get update
+          cd client
+          npm install
+          sudo npm run build -- --prod
+          sudo apt-get install sshpass
+          sudo ssh-keyscan 74.50.51.114 >> ~/.ssh/known_hosts
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            sshpass -p 'ApTSi#12Pkln99' scp -r -v dist/* root@74.50.51.114:/home/vhostdomains/apmed/htdocs
+            sshpass -p 'ApTSi#12Pkln99' scp -r -v ../server/* root@74.50.51.114:/root/apmed_node/server
+            sshpass -p 'ApTSi#12Pkln99' ssh root@74.50.51.114 "cd apmed_node/server; forever restart bin/www;"
+          fi
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master

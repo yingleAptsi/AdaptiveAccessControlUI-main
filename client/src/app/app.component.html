@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <!-- <a  href="#"><img src="../assets/images/apmed-logo.jpg" class="aptsi-logo img-responsive"></a> -->
+  <a class="navbar-brand" href="#">ApMED</a>
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+
+      <!-- Risk Score Authoring  -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="risk-score-authoring" style="color: whitesmoke;">Risk Score Authoring</a>
+      </li>
+      <!-- Asset Authoring  -->
+      <li>
+        <a class="nav-link" routerLink="asset/search" style="color: whitesmoke;">Asset Authoring<span class="sr-only"></span></a>
+      </li>
+      <!-- Access Flow Authoring -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="access-flow/search" style="color: whitesmoke;">Access Flow Authoring</a>
+      </li>
+      <!-- Products -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="products" style="color: whitesmoke;">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="login" style="color: whitesmoke;">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="sign-up" style="color: whitesmoke;">Sign-up</a>
+      </li>
+    </ul>
+  </div> 
+  
+  
+</nav>
+
+<router-outlet></router-outlet>

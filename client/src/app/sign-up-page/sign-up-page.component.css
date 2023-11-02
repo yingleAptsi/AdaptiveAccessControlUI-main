@@ -1,0 +1,250 @@
+
+    
+/* body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+} */
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #222131;
+}
+
+.Container {
+    width: 1600px;
+    height: 1050px;
+    padding-bottom: 47px;
+    padding-left: 193px;
+    padding-right: 200px;
+    background: #222131;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+}
+
+
+.SignUp {
+    width: 498px;
+    height: 894px;
+    position: relative;
+    background: #39394B;
+} */
+
+
+
+.SignupLayer {
+    width: 498px;
+    height: 956px;
+    position: relative;
+    background: #39394B;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+}
+
+.Frame80 {
+    height: 114px;
+    left: 203px;
+    top: 62px;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 30px;
+    display: inline-flex;
+}
+
+.Frame40 {
+    width: 90.46px;
+    height: 56px;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+}
+
+.Vector11 {
+    width: 25.26px;
+    height: 31.68px;
+    background: #605CFF;
+    border: 0.12px #605CFF solid;
+}
+
+.Vector10 {
+    width: 54.93px;
+    height: 39.94px;
+    background: #605CFF;
+    border: 0.12px #605CFF solid;
+}
+
+.Vector9 {
+    width: 90.46px;
+    height: 50.83px;
+    background: #605CFF;
+    border: 0.12px #605CFF solid;
+}
+
+.SignUpText {
+    width: 94px;
+    height: 28px;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-family: DM Sans;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.AlreadyHaveAnAccountLogIn {
+    left: 125px;
+    top: 875px;
+    position: absolute;
+    text-align: center;
+}
+
+/* Add or modify other styles as needed */
+
+.CheckBoxText {
+    width: 347px;
+    height: 42px;
+    left: 73px;
+    top: 741px;
+    position: absolute;
+}
+
+.Rectangle22 {
+    width: 15px;
+    height: 15px;
+    left: 0px;
+    top: 4px;
+    position: absolute;
+    opacity: 0.50;
+    border-radius: 2px;
+    border: 1px white solid;
+}
+
+.ByCreatingAnAccountYouAgreeToTheTermsOfUseAndOurPrivacyPolicy {
+    width: 322px;
+    left: 25px;
+    top: 0px;
+    position: absolute;
+}
+
+.Line {
+    width: 348px;
+    height: 0px;
+    left: 83px;
+    top: 225px;
+    position: absolute;
+}
+
+.Line2 {
+    width: 151px;
+    height: 0px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    opacity: 0.10;
+    border: 1px white solid;
+}
+
+.Line1 {
+    width: 151px;
+    height: 0px;
+    left: 197px;
+    top: 0px;
+    position: absolute;
+    opacity: 0.10;
+    border: 1px white solid;
+}
+
+.TextfieldFieldsDark {
+    width: 348px;
+    height: 81px;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    display: inline-flex;
+}
+
+.Atom {
+    align-self: stretch;
+    border-radius: 4px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+}
+
+.Text {
+    flex: 1 1 0;
+    height: 21px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+}
+
+.AtomDescription {
+    color: white;
+    font-size: 16px;
+    font-family: DM Sans;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.Fields {
+    align-self: stretch;
+    flex: 1 1 0;
+    background: #222131;
+    border-radius: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    display: inline-flex;
+}
+
+.AtomText1 {
+    color: white;
+    font-size: 16px;
+    font-family: DM Sans;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.ButtonDark {
+    width: 348px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    left: 73px;
+    top: 813px;
+    position: absolute;
+    background: #605CFF;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+}
+
+.Button {
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-family: DM Sans;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+

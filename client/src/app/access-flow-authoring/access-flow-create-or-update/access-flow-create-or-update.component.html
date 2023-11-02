@@ -1,0 +1,63 @@
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <div class="aptsi-card mx-auto my-5">
+                <div class="row">
+                  <div class="col-12">
+                    <header>Access Control Authoring Tool</header>
+                  </div>
+                </div>
+  
+                <div class="inner">
+  
+                  <div class="row mb-1">
+                    <div class="col-12">
+                      <h2 class="float-start">{{ isCreate ? 'Create New' : 'Update' }} Access Control Flow</h2>
+                    </div>
+                  </div>
+  
+                  <div class="row text-start">
+                    <div class="col-6">
+                      <h3>Flow Metadata</h3>  
+                      <form *ngIf="form" [formGroup]="form" (ngSubmit)="submit()">
+                        <div class="mb-3">
+                          <label class="form-label" for="accessControlFlowId">Access Control Flow Id:</label>
+                          <input class="form-control" type="text" id="accessControlFlowId" placeholder="Enter Accesss Control Flow Id"  formControlName="accessControlFlowId">
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="accessControlFlowName">Access Control Flow Name:</label>
+                          <input class="form-control" type="text" id="accessControlFlowName" placeholder="Enter Access Control Flow Name" formControlName="accessControlFlowName">
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="principalType">User Type:</label>
+                          <input class="form-control" type="text" id="principalType" placeholder="Enter Principal Type " formControlName="principalType">
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="assetId">Asset Id:</label>
+                          <input class="form-control" type="text" id="assetId" placeholder="Enter Asset Id" formControlName="assetId">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="assetName">Asset Name:</label>
+                            <input class="form-control" type="text" id="assetName" placeholder="Enter Asset Name" formControlName="assetName">
+                        </div>
+                        <button type="submit" class="btn btn-light me-3">{{ isCreate ? 'Create' : 'Save' }}</button>
+                        <button type="button" class="btn btn-light" routerLink="/access-flow/search">Cancel</button>
+                      </form>
+                    </div>
+  
+                    <div class="col-6">
+                        <div>
+                            <select class="form-select"  [(ngModel)]="selectedCate">
+                                <option value="null">None</option>
+                                <option *ngFor="let page of pages" value="{{page}}">{{page}}</option>
+                            </select>
+                            <button (click)="resetCategories()">Reset</button>               
+                        </div>
+                    </div>
+                  </div>
+  
+                </div>
+            </div>
+        </div> 
+    </div>
+  </section>

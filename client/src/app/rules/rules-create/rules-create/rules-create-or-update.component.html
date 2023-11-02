@@ -1,0 +1,63 @@
+<section class="container">
+  <div class="row justify-content-center">
+      <div class="col-12 text-center">
+          <div class="aptsi-card mx-auto my-5">
+              <div class="row">
+                <div class="col-12">
+                  <header>Risk Score Authoring</header>
+                </div>
+              </div>
+
+              <div class="inner">
+
+                <div class="row mb-1">
+                  <div class="col-12">
+                    <h2 class="float-start">{{ isCreate ? 'Create New' : 'Update' }} Rules</h2>
+                  </div>
+                </div>
+
+                <div class="row text-start">
+                  <div class="col-6">
+                    <h3>Rules Metadata</h3>  
+                    <form *ngIf="form" [formGroup]="form" (ngSubmit)="submit()">
+                      <div class="mb-3">
+                        <label class="form-label"  for="name">Rules Name:</label>
+                        <input  class="form-control" id="name" placeholder="Enter Rule Name" formControlName="name">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="type">Rules Type:</label>
+                        <input class="form-control" type="text" id="type" placeholder="Enter Rule Type"  formControlName="type">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="ruleId">Rule Id:</label>
+                        <input class="form-control" type="text" id="ruleId" placeholder="Enter Rule Id"  formControlName="ruleId">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="stringRepresentation">String Representation:</label>
+                        <input class="form-control" type="text" id="stringRepresentation" placeholder="Enter String Representation"  formControlName="stringRepresentation">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="description">Description:</label>
+                        <textarea class="form-control" type="text" id="description" 
+                          placeholder="Enter Description"  formControlName="description">
+                        </textarea>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class="col-12">
+                    <div class="text-start">
+                      <button type="submit" class="btn btn-light me-3">{{ isCreate ? 'Create' : 'Save' }}</button>
+                      <button type="button" class="btn btn-light" routerLink="/rules">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+          </div>
+      </div> 
+  </div>
+</section>
